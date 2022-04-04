@@ -1,10 +1,10 @@
+import CardList from 'components/CardList';
+import ErrorBoundary from 'components/ErrorBoundary';
+import Loader from 'components/Loader';
+import Scroll from 'components/Scroll';
+import SearchBox from 'components/SearchBox';
+import useUsers from 'hooks/useUsers';
 import { Fragment, useState } from 'react';
-import useUsers from '../../hooks/useUsers';
-import CardList from '../CardList';
-import ErrorBoundary from '../ErrorBoundary';
-import Loader from '../Loader';
-import Scroll from '../Scroll';
-import SearchBox from '../SearchBox';
 import './App.scss';
 
 const App = () => {

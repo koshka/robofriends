@@ -14,7 +14,6 @@ const ErrorBoundaryContainer = ({ children }) => {
   const myErrorHandler = (error) => {
     console.error('LOGGING ERROR HERE:', error);
   };
-  console.log('HERE');
   return (
     <ErrorBoundary FallbackComponent={Error} onError={myErrorHandler}>
       {children}
