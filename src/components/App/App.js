@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import useUsers from '../../hooks/useUsers';
 import CardList from '../CardList';
+import ErrorBoundary from '../ErrorBoundary';
 import Loader from '../Loader';
 import Scroll from '../Scroll';
 import SearchBox from '../SearchBox';
@@ -30,7 +31,9 @@ const App = () => {
             }}
           />
           <Scroll>
-            <CardList items={items} />
+            <ErrorBoundary>
+              <CardList items={items} />
+            </ErrorBoundary>
           </Scroll>
         </Fragment>
       )}

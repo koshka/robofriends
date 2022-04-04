@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.error-boundary {
+  display: flex;
+  align-items: center;
+  color: $color-tiffany-blue;
+  font-weight: bold;
+
+  .cat {
+    font-size: 42px;
+    margin-right: 10px;
+  }
+}
