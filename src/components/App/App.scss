@@ -1,0 +1,28 @@
+@import '../../variables';
+
+@font-face {
+  font-family: segaFont;
+  font-style: normal;
+  font-weight: normal;
+  src: url(../../sega.ttf);
+}
+
+.app {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.app {
+  h1 {
+    font-family: segaFont;
+    font-weight: 200;
+    color: $color-robins-egg-blue;
+  }
+  .loader-container {
+    margin-top: 50px;
+  }
+}
