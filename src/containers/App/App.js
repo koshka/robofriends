@@ -3,16 +3,19 @@ import ErrorBoundary from 'components/ErrorBoundary';
 import Loader from 'components/Loader';
 import Scroll from 'components/Scroll';
 import SearchBox from 'components/SearchBox';
+import { CHANGE_SEARCH_QUERY } from 'constants';
 import useUsers from 'hooks/useUsers';
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 
-const App = () => {
-  const [searchText, setSearchText] = useState('');
+const App = ({}) => {
+  const dispatch = useDispatch();
   const { isLoading, users } = useUsers();
+  const query = useSelector((state) => state.query);
 
   const items = users.filter((robot) =>
-    robot.name.toLowerCase().includes(searchText.toLowerCase())
+    robot.name.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -24,10 +27,12 @@ const App = () => {
         </div>
       ) : (
         <Fragment>
-          {' '}
           <SearchBox
             onChange={(event) => {
-              setSearchText(event.target.value);
+              dispatch({
+                type: CHANGE_SEARCH_QUERY,
+                payload: event.target.value,
+              });
             }}
           />
           <Scroll>
