@@ -1,18 +1,22 @@
+import { requestUsers } from 'actions';
 import CardList from 'components/CardList';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Loader from 'components/Loader';
 import Scroll from 'components/Scroll';
 import SearchBox from 'components/SearchBox';
 import { CHANGE_SEARCH_QUERY } from 'constants';
-import useUsers from 'hooks/useUsers';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 
 const App = ({}) => {
   const dispatch = useDispatch();
-  const { isLoading, users } = useUsers();
-  const query = useSelector((state) => state.query);
+  const query = useSelector((state) => state.search.query);
+  const { isPending, users } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    dispatch(requestUsers);
+  }, []);
 
   const items = users.filter((robot) =>
     robot.name.toLowerCase().includes(query.toLowerCase())
@@ -21,7 +25,7 @@ const App = ({}) => {
   return (
     <div className="app">
       <h1 className="title f1">Cat Friends</h1>
-      {isLoading ? (
+      {isPending ? (
         <div className="loader-container">
           <Loader />
         </div>
