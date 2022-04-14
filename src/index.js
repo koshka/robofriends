@@ -10,6 +10,15 @@ import App from './containers/App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+if (process.env.NODE_ENV === 'development') {
+  const whyDidYouRender = require('@welldone-software/why-did-you-render');
+  whyDidYouRender(React, {
+    include: [/CardList/],
+    logOnDifferentValues: true,
+    trackAllPureComponents: true,
+  });
+}
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   search,

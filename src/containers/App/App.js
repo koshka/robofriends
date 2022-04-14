@@ -9,7 +9,7 @@ import { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 
-const App = ({}) => {
+const App = () => {
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.query);
   const { isPending, users } = useSelector((state) => state.users);
